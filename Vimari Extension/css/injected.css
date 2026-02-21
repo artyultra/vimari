@@ -3,11 +3,11 @@
   border: none;
   bottom: auto;
   box-shadow: none;
-  color: black;
+  color: #4c4f69;
   cursor: auto;
   display: inline;
   float: none;
-  font-family : "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: inherit;
   font-style: normal;
   font-variant: normal;
@@ -34,8 +34,12 @@
   vertical-align: baseline;
   white-space: normal;
   width: auto;
-  z-index: 2147483647; /* Maximum value in Safari */
+  z-index: 2147483647; /* stays above everything */
 }
+
+/* =========================
+   Hint Marker Box
+   ========================= */
 
 div.internalVimiumHintMarker {
   position: absolute !important;
@@ -44,25 +48,45 @@ div.internalVimiumHintMarker {
   left: -1px;
   white-space: nowrap !important;
   overflow: hidden !important;
-  font-size: 11px !important;
-  padding: 2px 3px !important;
-  background-color: #feda31 !important;
-  border: 0 !important;
-  border-radius: 2px !important;
-  box-shadow: inset 0 -2px 0 #b39922 !important;
+
+  /* readability */
+  font-size: 12px !important;
+  padding: 3px 6px !important;
+  font-weight: 700;
+
+  /* Catppuccin Latte */
+  background-color: #eff1f5 !important; /* base */
+  border: 1px solid #bcc0cc !important; /* surface border */
+  border-radius: 5px !important;
+
+  /* subtle depth */
+  box-shadow:
+    inset 0 -2px 0 #ccd0da !important,
+    0 1px 2px rgba(0, 0, 0, 0.12) !important;
 }
+
+/* =========================
+   Hint Text
+   ========================= */
 
 div.internalVimiumHintMarker span {
-  color: #4a400e;
+  color: #4c4f69;
   font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-weight: 700;
+  text-shadow: none;
 }
 
+/* highlighted matching characters */
 div.internalVimiumHintMarker > .matchingCharacter {
-  color: #dcbc2a;
+  color: #1e66f5; /* Catppuccin blue */
 }
 
-.vimiumHUD, .vimiumHUD * {
+/* =========================
+   HUD (bottom status bar)
+   ========================= */
+
+.vimiumHUD,
+.vimiumHUD * {
   line-height: 100%;
   font-size: 11px;
   font-weight: normal;
@@ -70,45 +94,48 @@ div.internalVimiumHintMarker > .matchingCharacter {
 
 .vimiumHUD {
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
   left: 40px;
-  color: black;
+
+  color: #4c4f69;
   max-width: 400px;
   min-width: 150px;
   text-align: center;
-  background-color: #ebebeb;
-  padding: 3px 3px 5px 3px;
-  border: 1px solid #b3b3b3;
+
+  background-color: #e6e9ef;
+  padding: 4px 6px 6px 6px;
+
+  border: 1px solid #bcc0cc;
   border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  font-family: Lucida Grande, Arial, Sans;
-  /* One less than vimium's hint markers, so link hints can be shown e.g. for the panel's close button. */
+  border-radius: 6px 6px 0 0;
+
+  font-family: "Helvetica Neue", Arial, sans-serif;
+
   z-index: 99999998;
-  text-shadow: 0px 1px 2px #FFF;
-  line-height: 1.0;
+  text-shadow: none;
   opacity: 0;
 }
 
-.vimiumHUD a, .vimiumHUD a:hover {
+.vimiumHUD a,
+.vimiumHUD a:hover {
   background: transparent;
-  color: blue;
+  color: #1e66f5;
   text-decoration: underline;
 }
 
 .vimiumHUD a.close-button {
-  float:right;
-  font-family:courier new;
-  font-weight:bold;
-  color:#9C9A9A;
-  text-decoration:none;
-  padding-left:10px;
-  margin-top:-1px;
-  font-size:14px;
+  float: right;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  color: #7c7f93;
+  text-decoration: none;
+  padding-left: 10px;
+  margin-top: -1px;
+  font-size: 14px;
 }
 
 .vimiumHUD a.close-button:hover {
-  color:#333333;
-  cursor:default;
-  -webkit-user-select:none;
+  color: #4c4f69;
+  cursor: default;
+  -webkit-user-select: none;
 }
-
